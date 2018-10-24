@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>New recipe</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-input #recipeName type="text" placeholder="Nom de la recette"></ion-input>
+  </ion-card>
+
+  <ion-list class="accordion-list">
+    <!-- First Level -->
+    <ion-list-header *ngFor="let item of ingredientsList; let i = index" no-lines no-padding>
+      <!-- Toggle Button -->
+      <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
+        <ion-icon item-left name="arrow-forward" *ngIf="!item.open"></ion-icon>
+        <ion-icon item-left name="arrow-down" *ngIf="item.open"></ion-icon>
+        {{ item.familleMere }}
+      </button>
+
+      <ion-list *ngIf="item.typeMere && item.open" no-lines>
+        <!-- Second Level -->
+        <ion-list-header class="correctMargin" *ngFor="let child of item.typeMere; let j = index" no-padding>
+          <!-- Toggle Button -->
+          <button ion-item (click)="toggleItem(i, j)" *ngIf="child.sousType" class="child" detail-none>
+            <ion-icon item-left name="add" *ngIf="!child.open"></ion-icon>
+            <ion-icon item-left name="close" *ngIf="child.open"></ion-icon>
+            {{ child.famille }} <!--Mettre la liste des ingredients-->
+          </button>
+
+          <!-- Direct Add Button as Fallback -->
+          <ion-item *ngIf="!child.sousType" ion-item detail-none class="child-item" text-wrap (click)="addToList(child.typeName, $event)">
+            <h2>{{ child.typeName }}</h2>
+            <!--<p text-lowercase>{{ child.information }}</p>-->
+            <!--<button ion-button outline item-end (click)="buyItem(child)">{{ child.idIngredient }}</button>-->
+          </ion-item>
+
+          <ion-list *ngIf="child.sousType && child.open">
+            <!-- Third Level -->
+            <ion-item *ngFor="let item of child.sousType; let k = index" detail-none class="child-item thirdSubSection" text-wrap  (click)="addToList(item.typeName, $event)">
+              <h2>{{ item.typeName }}</h2>
+              <!--p text-lowercase>{{ item.information }}</p>-->
+              <!-- Direct Add Button -->
+              <!--<button ion-button outline item-end (click)="buyItem(item)">{{ item.idIngredient }}</button>-->
+            </ion-item>
+          </ion-list>
+        </ion-list-header>
+      </ion-list>
+    </ion-list-header>
+    <button ion-button (click)="addRecipe(recipeName.value)">Ajouter la recette</button>
+  </ion-list>
+
+</ion-content>

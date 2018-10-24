@@ -1,0 +1,37 @@
+[
+  {
+    "recipeId": 1,
+    "weight": 5,
+    "title": "Lasagnes",
+    "ingredients": [
+      { "ingredientName":"lasagne" },
+      { "ingredientName":"viande hachée" },
+      { "ingredientName":"Béchamel" },
+      { "ingredientName":"tomate" },
+      { "ingredientName":"gruyère rapé" }
+    ]
+  },
+  {
+    "recipeId": 2,
+    "weight": 2,
+    "title": "Bolognaises",
+    "ingredients": [
+      { "ingredientName":"spaghetti" },
+      { "ingredientName":"viande hachée" },
+      { "ingredientName":"oignon" },
+      { "ingredientName":"tomate" }
+    ]
+  },
+  {
+    "recipeId": 3,
+    "weight": 1,
+    "title": "Poellée de légumes",
+    "ingredients": [
+      { "ingredientName":"courgette" },
+      { "ingredientName":"tomate" },
+      { "ingredientName":"carotte" },
+      { "ingredientName":"champignon" },
+      { "ingredientName":"lardons" }
+    ]
+  }
+]

@@ -1,0 +1,82 @@
+{
+  "recipes": [
+    {
+      "recipeId": 1,
+      "weight": 5,
+      "title": "Lasagnes",
+      "ingredients": [
+        { "idIngredient":1,  "ingredientName":"Pâtes" },
+        { "idIngredient":2,  "ingredientName":"Viande hachée" },
+        { "idIngredient":3,  "ingredientName":"Béchamel" },
+        { "idIngredient":4,  "ingredientName":"Tomate en boite" },
+        { "idIngredient":5,  "ingredientName":"Gruyère rapé" }
+      ]
+    },
+    {
+      "recipeId": 2,
+      "weight": 2,
+      "title": "Bolognaises",
+      "ingredients": [
+        { "idIngredient":1,  "ingredientName":"Pâtes" },
+        { "idIngredient":2,  "ingredientName":"Viande hachée" },
+        { "idIngredient":3,  "ingredientName":"Oignon" },
+        { "idIngredient":4,  "ingredientName":"Tomate en boite" }
+      ]
+    },
+    {
+      "recipeId": 3,
+      "weight": 1,
+      "title": "Poellée de légumes",
+      "ingredients": [
+        { "idIngredient":6,  "ingredientName":"Courgette" },
+        { "idIngredient":7,  "ingredientName":"Tomate" },
+        { "idIngredient":8,  "ingredientName":"Carotte" },
+        { "idIngredient":9,  "ingredientName":"Champignon" },
+        { "idIngredient":10,  "ingredientName":"Lardons" }
+      ]
+    }
+  ],
+  "ingredients": [
+      {
+        "familleMere": "feculents",
+        "types": [
+          {
+            "famille":"pates",
+            "types": [
+              { "name": "lasagnes" },
+              { "name": "spaguettis" },
+              { "name": "farfalles" }
+            ]
+          },
+          {
+            "famille":"riz",
+            "types": [
+              { "name": "long" },
+              { "name": "rond" }
+            ]
+          },
+          {
+            "famille":"pommes de terre",
+            "types": [
+              { "name": "frites" },
+              { "name": "normale" }
+            ]
+          },
+        ]
+      }
+  ]
+}
+
+feculents
+  pates
+    lasagnes
+    spaguettis
+    etc
+  riz
+  Pommes de terres
+    frites
+    farcies
+    
+legumes frais
+fruits
+conserves

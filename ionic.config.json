@@ -1,0 +1,7 @@
+{
+  "name": "ToCookList",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

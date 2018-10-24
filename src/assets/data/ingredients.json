@@ -1,0 +1,172 @@
+[
+	{
+		"familleMere": "feculents",
+		"typeMere": [{
+				"famille": "pates",
+				"sousType": [{
+						"typeName": "lasagne"
+					},
+					{
+						"typeName": "spaghetti"
+					},
+					{
+						"typeName": "farfalle"
+					}
+				]
+			},
+			{
+				"famille": "riz",
+				"sousType": [{
+						"typeName": "long"
+					},
+					{
+						"typeName": "rond"
+					}
+				]
+			},
+			{
+				"famille": "pommes de terre",
+				"sousType": [{
+						"typeName": "frite"
+					},
+					{
+						"typeName": "normale"
+					}
+				]
+			}
+		]
+	},
+	{
+		"familleMere": "legumes",
+		"typeMere": [{
+				"typeName": "haricots verts"
+			},
+			{
+				"typeName": "haricots jaune"
+			},
+			{
+				"typeName": "poireau"
+			},
+			{
+				"typeName": "petit pois"
+			},
+			{
+				"typeName": "carotte"
+			},
+			{
+				"typeName": "courgette"
+			},
+			{
+				"typeName": "champignon"
+			},
+			{
+				"typeName": "tomate"
+			},
+			{
+				"typeName": "tomate cerise"
+			},
+			{
+				"typeName": "oignon"
+			},
+			{
+				"typeName": "avocat"
+			}
+		]
+	},
+	{
+		"familleMere": "fruits",
+		"typeMere": [{
+				"typeName": "pomme"
+			},
+			{
+				"typeName": "banane"
+			},
+			{
+				"typeName": "poire"
+			},
+			{
+				"typeName": "kiwi"
+			},
+			{
+				"typeName": "ananas"
+			},
+			{
+				"typeName": "framboise"
+			},
+			{
+				"typeName": "fraise"
+			}
+		]
+	},
+	{
+		"familleMere": "viandes",
+		"typeMere": [{
+				"famille": "porc",
+				"sousType": [{
+						"typeName": "lardons"
+					},
+					{
+						"typeName": "jambon"
+					},
+					{
+						"typeName": "côtes de porc"
+					},
+					{
+						"typeName": "filet de porc"
+					}
+				]
+			},
+			{
+				"famille": "dinde",
+				"sousType": [{
+						"typeName": "escalope de dinde"
+					},
+					{
+						"typeName": "émincé de dinde"
+					}
+				]
+			},
+			{
+				"famille": "boeuf",
+				"sousType": [{
+						"typeName": "côte de boeuf"
+					},
+					{
+						"typeName": "steak"
+					},
+					{
+						"typeName": "viande hachée"
+					}
+				]
+			}
+		]
+	},
+	{
+		"familleMere": "fromages",
+		"typeMere": [{
+				"typeName": "gruyère rapé"
+			},
+			{
+				"typeName": "chèvre"
+			},
+			{
+				"typeName": "parmesan"
+			},
+			{
+				"typeName": "camembert"
+			},
+			{
+				"typeName": "fourme d'ambert"
+			},
+			{
+				"typeName": "coulomiers"
+			},
+			{
+				"typeName": "cheddar"
+			},
+			{
+				"typeName": "mozzarella"
+			}
+		]
+	}
+]
