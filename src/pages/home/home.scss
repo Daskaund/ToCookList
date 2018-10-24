@@ -1,3 +1,19 @@
 page-home {
+  .home-topbar ion-col:last-child{
+    border-left: 1px solid rgba(0, 0, 0, .2);
+    padding-left: 10px;
+  }
 
+  .home-topbar ion-col ion-title {
+    position: relative;
+    top: calc(50% - 13px);
+  }
+  .home-topbar ion-col .searchbar-md .searchbar-input {
+    padding: 6px 30px 6px 40px;
+  }
+  .home-topbar ion-col{
+    padding: 0 0 0 5px;
+  }
 }
+
+
