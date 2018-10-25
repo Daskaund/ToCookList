@@ -13,6 +13,10 @@ import {ManageRecipePage} from "../pages/manage-recipe/manage-recipe";
 import {NewRecipePage} from "../pages/new-recipe/new-recipe";
 import {HttpModule} from "@angular/http";
 import {File} from "@ionic-native/file";
+import {AngularFireModule} from "@angular/fire";
+import {FIREBASE_CONFIG} from "./app.firebase.config";
+import {LoginPage} from "../pages/login/login";
+import {RegisterPage} from "../pages/register/register";
 
 @NgModule({
   declarations: [
@@ -20,12 +24,15 @@ import {File} from "@ionic-native/file";
     HomePage,
     ListPage,
     ManageRecipePage,
-    NewRecipePage
+    NewRecipePage,
+    LoginPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    AngularFireModule.initializeApp(FIREBASE_CONFIG)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -33,7 +40,9 @@ import {File} from "@ionic-native/file";
     HomePage,
     ListPage,
     ManageRecipePage,
-    NewRecipePage
+    NewRecipePage,
+    LoginPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,
