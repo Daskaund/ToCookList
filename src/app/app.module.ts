@@ -12,6 +12,7 @@ import { DataFetcherProvider } from '../providers/data-fetcher/data-fetcher';
 import {ManageRecipePage} from "../pages/manage-recipe/manage-recipe";
 import {NewRecipePage} from "../pages/new-recipe/new-recipe";
 import {HttpModule} from "@angular/http";
+import {File} from "@ionic-native/file";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {HttpModule} from "@angular/http";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DataFetcherProvider
+    DataFetcherProvider,
+    File
   ]
 })
 export class AppModule {}

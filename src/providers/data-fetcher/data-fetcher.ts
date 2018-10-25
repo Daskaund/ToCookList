@@ -36,4 +36,8 @@ export class DataFetcherProvider {
       });
     });
   }
+
+  public postRecipes(data){
+    this.http.post('assets/data/recipesTest.json', data);
+  }
 }

@@ -14,7 +14,7 @@ import {ManageRecipePage} from "../pages/manage-recipe/manage-recipe";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = NewRecipePage;
 
   pages: Array<{title: string, component: any}>;
 
