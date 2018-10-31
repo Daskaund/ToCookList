@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {User} from "../../models/user";
+import {AngularFireAuth} from "@angular/fire/auth";
 
 /**
  * Generated class for the RegisterPage page.
@@ -15,11 +17,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class RegisterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  user = {} as User;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private afAuth: AngularFireAuth) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
 
+  async register(user: User){
+    try {
+      const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
+      console.log(result);
+    }
+    catch (e) {
+      console.error(e);
+    }
+  }
 }

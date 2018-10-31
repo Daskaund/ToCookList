@@ -9,6 +9,7 @@ import {NewRecipePage} from "../pages/new-recipe/new-recipe";
 import {ManageRecipePage} from "../pages/manage-recipe/manage-recipe";
 import {LoginPage} from "../pages/login/login";
 
+
 @Component({
   templateUrl: 'app.html'
 })
