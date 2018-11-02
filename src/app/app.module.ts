@@ -15,9 +15,13 @@ import {ManageRecipePage} from "../pages/manage-recipe/manage-recipe";
 import {NewRecipePage} from "../pages/new-recipe/new-recipe";
 import {HttpModule} from "@angular/http";
 import {File} from "@ionic-native/file";
+import {FIREBASE_CONFIG} from "./app.firebase.config";
 import {AngularFireModule} from "@angular/fire";
 import {AngularFireAuthModule} from "@angular/fire/auth";
-import {FIREBASE_CONFIG} from "./app.firebase.config";
+import {AngularFireDatabaseModule} from "@angular/fire/database";
+import {AngularFireStorageModule} from "@angular/fire/storage";
+import { AfProvider } from '../providers/af/af';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,9 @@ import {FIREBASE_CONFIG} from "./app.firebase.config";
     IonicModule.forRoot(MyApp),
     HttpModule,
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    AngularFireStorageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -51,7 +57,9 @@ import {FIREBASE_CONFIG} from "./app.firebase.config";
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataFetcherProvider,
-    File
+    File,
+    AfProvider,
+    InAppBrowser
   ]
 })
 export class AppModule {}
