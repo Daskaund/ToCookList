@@ -3,18 +3,17 @@ import {AlertController, NavController, ToastController} from 'ionic-angular';
 import {AfProvider} from "../../providers/af/af";
 import {Observable} from "rxjs/Observable";
 import {InAppBrowser} from "@ionic-native/in-app-browser";
+import {FirebaseListObservable} from "@angular/fire/database-deprecated";
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  files: any[];
+  files: Observable<any[]>;
 
   constructor(private iab: InAppBrowser, public navCtrl: NavController, private afProvider: AfProvider, private alertCtrl: AlertController, private toastCtrl: ToastController) {
-    this.afProvider.getFiles().subscribe(res => {
-      this.files = res;
-    });
+    this.files = this.afProvider.getFiles();
   }
 
   addFile() {
