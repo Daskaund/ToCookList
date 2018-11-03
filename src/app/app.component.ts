@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import {NewRecipePage} from "../pages/new-recipe/new-recipe";
 import {ManageRecipePage} from "../pages/manage-recipe/manage-recipe";
+import {LaboratoirePage} from "../pages/laboratoire/laboratoire";
 
 
 @Component({
@@ -15,7 +16,7 @@ import {ManageRecipePage} from "../pages/manage-recipe/manage-recipe";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = LaboratoirePage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -25,6 +26,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
+      { title: 'Labo', component: LaboratoirePage },
       { title: 'This week\'s recipes', component: ListPage },
       { title: 'New recipe', component: NewRecipePage },
       { title: 'Manage recipes', component: ManageRecipePage }
