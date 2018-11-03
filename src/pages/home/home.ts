@@ -3,7 +3,6 @@ import {AlertController, NavController, ToastController} from 'ionic-angular';
 import {AfProvider} from "../../providers/af/af";
 import {Observable} from "rxjs/Observable";
 import {InAppBrowser} from "@ionic-native/in-app-browser";
-import {FirebaseListObservable} from "@angular/fire/database-deprecated";
 
 @Component({
   selector: 'page-home',
@@ -67,6 +66,7 @@ export class HomePage {
   }
 
   viewFile(url) {
-    this.iab.create(url);
+    console.log(url);
+    // this.iab.create(url);
   }
 }

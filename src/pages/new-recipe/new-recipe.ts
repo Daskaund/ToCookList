@@ -2,13 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {DataFetcherProvider} from "../../providers/data-fetcher/data-fetcher";
 import { File } from '@ionic-native/file';
-
-/**
- * Generated class for the NewRecipePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {AfProvider} from "../../providers/af/af";
+import {Observable} from "rxjs/Observable";
 
 @IonicPage()
 @Component({
@@ -16,10 +11,12 @@ import { File } from '@ionic-native/file';
   templateUrl: 'new-recipe.html',
 })
 export class NewRecipePage {
-  ingredientsList: any;
+  ingredientsList: Observable<any[]>;
   ingredientSelected: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private dataFetcher: DataFetcherProvider, private file: File) {
+  constructor(private afProvider: AfProvider, navCtrl: NavController, navParams: NavParams, private dataFetcher: DataFetcherProvider, private file: File) {
+    this.ingredientsList = this.afProvider.getFiles();
+    console.log("this.ingredientsList : ", this.ingredientsList);
   }
 
   addRecipe(recipeName){
@@ -28,14 +25,8 @@ export class NewRecipePage {
     this.saveData(recipeName, this.ingredientSelected);
   }
 
-  ionViewDidLoad() {
-    this.dataFetcher.getIngredientsData().then(data => {
-      this.ingredientsList = data;
-      console.log(data);
-    })
-  }
-
-  toggleSection(i) {
+  toggleSection(i, item) {
+    console.log("toggleSection: ", i, item);
     this.ingredientsList[i].open = !this.ingredientsList[i].open;
   }
 

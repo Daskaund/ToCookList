@@ -20,15 +20,19 @@
 </ion-header>
 
 <ion-content>
+<ion-title margin>Ingredients</ion-title>
 
   <ion-card *ngFor="let file of files | async">
     <ion-card-header>
-      {{ file.created | date:'medium' }}
+      <!--{{ file.created | date:'medium' }}-->
+      {{ file.name }}
     </ion-card-header>
 
     <ion-card-content>
 
-      <button ion-button block icon-left outline (click)="viewFile(file.url)">
+      {{ file.familleMere }}
+
+      <button ion-button block icon-left outline (click)="viewFile(file)">
         <ion-icon name="eye"></ion-icon>
         {{ file.fullPath }}
       </button>

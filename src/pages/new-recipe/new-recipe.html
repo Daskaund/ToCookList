@@ -15,9 +15,9 @@
 
   <ion-list class="accordion-list">
     <!-- First Level -->
-    <ion-list-header *ngFor="let item of ingredientsList; let i = index" no-lines no-padding>
+    <ion-list-header *ngFor="let item of ingredientsList | async; let i = index" no-lines no-padding>
       <!-- Toggle Button -->
-      <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
+      <button ion-item (click)="toggleSection(i, item)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
         <ion-icon item-left name="arrow-forward" *ngIf="!item.open"></ion-icon>
         <ion-icon item-left name="arrow-down" *ngIf="item.open"></ion-icon>
         {{ item.familleMere }}
@@ -25,7 +25,7 @@
 
       <ion-list *ngIf="item.typeMere && item.open" no-lines>
         <!-- Second Level -->
-        <ion-list-header class="correctMargin" *ngFor="let child of item.typeMere; let j = index" no-padding>
+        <ion-list-header class="correctMargin" *ngFor="let child of item.typeMere | async; let j = index" no-padding>
           <!-- Toggle Button -->
           <button ion-item (click)="toggleItem(i, j)" *ngIf="child.sousType" class="child" detail-none>
             <ion-icon item-left name="add" *ngIf="!child.open"></ion-icon>
@@ -42,7 +42,7 @@
 
           <ion-list *ngIf="child.sousType && child.open">
             <!-- Third Level -->
-            <ion-item *ngFor="let item of child.sousType; let k = index" detail-none class="child-item thirdSubSection" text-wrap  (click)="addToList(item.typeName, $event)">
+            <ion-item *ngFor="let item of child.sousType | async; let k = index" detail-none class="child-item thirdSubSection" text-wrap  (click)="addToList(item.typeName, $event)">
               <h2>{{ item.typeName }}</h2>
               <!--p text-lowercase>{{ item.information }}</p>-->
               <!-- Direct Add Button -->

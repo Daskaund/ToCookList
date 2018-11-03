@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/map';
 import {Http} from "@angular/http";
+import "rxjs-compat/add/operator/map";
 
 /*
   Generated class for the DataFetcherProvider provider.
@@ -14,12 +14,11 @@ export class DataFetcherProvider {
   public recipes: any;
 
   constructor(public http: Http) {
-    console.log('Hello DataFetcherProvider Provider');
   }
 
   public getRecipesData(){
     return new Promise((resolve, reject)=> {
-      this.http.get('assets/data/recipes.json').map(res => res.json()).subscribe(response => {
+      this.http.get('src/assets/data/recipes.json').map(res => res.json()).subscribe(response => {
         resolve(response);
       }, error => {
         reject(error);
@@ -29,7 +28,7 @@ export class DataFetcherProvider {
 
   public getIngredientsData(){
     return new Promise((resolve, reject)=> {
-      this.http.get('assets/data/ingredients.json').map(res => res.json()).subscribe(response => {
+      this.http.get('src/assets/data/ingredients.json').map(res => res.json()).subscribe(response => {
         resolve(response);
       }, error => {
         reject(error);
@@ -38,6 +37,6 @@ export class DataFetcherProvider {
   }
 
   public postRecipes(data){
-    this.http.post('assets/data/recipesTest.json', data);
+    this.http.post('src/assets/data/recipesTest.json', data);
   }
 }
