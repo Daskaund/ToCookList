@@ -15,9 +15,14 @@ import {ManageRecipePage} from "../pages/manage-recipe/manage-recipe";
 import {NewRecipePage} from "../pages/new-recipe/new-recipe";
 import {HttpModule} from "@angular/http";
 import {File} from "@ionic-native/file";
+import {FIREBASE_CONFIG} from "./app.firebase.config";
 import {AngularFireModule} from "@angular/fire";
 import {AngularFireAuthModule} from "@angular/fire/auth";
-import {FIREBASE_CONFIG} from "./app.firebase.config";
+import {AngularFireDatabaseModule} from "@angular/fire/database";
+import {AngularFireStorageModule} from "@angular/fire/storage";
+import { AfProvider } from '../providers/af/af';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import {LaboratoirePage} from "../pages/laboratoire/laboratoire";
 
 @NgModule({
   declarations: [
@@ -27,14 +32,17 @@ import {FIREBASE_CONFIG} from "./app.firebase.config";
     ManageRecipePage,
     NewRecipePage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    LaboratoirePage,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    AngularFireStorageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,14 +52,17 @@ import {FIREBASE_CONFIG} from "./app.firebase.config";
     ManageRecipePage,
     NewRecipePage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    LaboratoirePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataFetcherProvider,
-    File
+    File,
+    AfProvider,
+    InAppBrowser
   ]
 })
 export class AppModule {}

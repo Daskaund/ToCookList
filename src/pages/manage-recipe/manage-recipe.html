@@ -9,44 +9,44 @@
 
 
 <ion-content>
-  <ion-list class="accordion-list">
-    <!-- First Level -->
-    <ion-list-header *ngFor="let item of recipes; let i = index" no-lines no-padding>
-      <!-- Toggle Button -->
-      <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
-        <ion-icon item-left name="arrow-forward" *ngIf="!item.open"></ion-icon>
-        <ion-icon item-left name="arrow-down" *ngIf="item.open"></ion-icon>
-        {{ item.title }}
-      </button>
+  <!--<ion-list class="accordion-list">-->
+    <!--&lt;!&ndash; First Level &ndash;&gt;-->
+    <!--<ion-list-header *ngFor="let item of recipes; let i = index" no-lines no-padding>-->
+      <!--&lt;!&ndash; Toggle Button &ndash;&gt;-->
+      <!--<button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">-->
+        <!--<ion-icon item-left name="arrow-forward" *ngIf="!item.open"></ion-icon>-->
+        <!--<ion-icon item-left name="arrow-down" *ngIf="item.open"></ion-icon>-->
+        <!--{{ item.title }}-->
+      <!--</button>-->
 
-      <ion-list *ngIf="item.ingredients && item.open" no-lines>
-        <!-- Second Level -->
-        <ion-list-header *ngFor="let child of item.ingredients; let j = index" no-padding>
-          <!-- Toggle Button -->
-          <button ion-item (click)="toggleItem(i, j)" *ngIf="child.sousIngredient" class="child" detail-none>
-            <ion-icon item-left name="add" *ngIf="!child.open"></ion-icon>
-            <ion-icon item-left name="close" *ngIf="child.open"></ion-icon>
-            {{ child.ingredientName }} <!--Mettre la liste des ingredients-->
-          </button>
+      <!--<ion-list *ngIf="item.ingredients && item.open" no-lines>-->
+        <!--&lt;!&ndash; Second Level &ndash;&gt;-->
+        <!--<ion-list-header *ngFor="let child of item.ingredients; let j = index" no-padding>-->
+          <!--&lt;!&ndash; Toggle Button &ndash;&gt;-->
+          <!--<button ion-item (click)="toggleItem(i, j)" *ngIf="child.sousIngredient" class="child" detail-none>-->
+            <!--<ion-icon item-left name="add" *ngIf="!child.open"></ion-icon>-->
+            <!--<ion-icon item-left name="close" *ngIf="child.open"></ion-icon>-->
+            <!--{{ child.ingredientName }} &lt;!&ndash;Mettre la liste des ingredients&ndash;&gt;-->
+          <!--</button>-->
 
-          <!-- Direct Add Button as Fallback -->
-          <ion-item *ngIf="!child.sousIngredient" ion-item detail-none class="child-item" text-wrap>
-            <h2>{{ child.ingredientName }}</h2>
-            <!--<p text-lowercase>{{ child.information }}</p>-->
-            <!--<button ion-button outline item-end (click)="buyItem(child)">{{ child.idIngredient }}</button>-->
-          </ion-item>
+          <!--&lt;!&ndash; Direct Add Button as Fallback &ndash;&gt;-->
+          <!--<ion-item *ngIf="!child.sousIngredient" ion-item detail-none class="child-item" text-wrap>-->
+            <!--<h2>{{ child.ingredientName }}</h2>-->
+            <!--&lt;!&ndash;<p text-lowercase>{{ child.information }}</p>&ndash;&gt;-->
+            <!--&lt;!&ndash;<button ion-button outline item-end (click)="buyItem(child)">{{ child.idIngredient }}</button>&ndash;&gt;-->
+          <!--</ion-item>-->
 
-          <ion-list *ngIf="child.ingredients && child.open">
-            <!-- Third Level -->
-            <ion-item *ngFor="let item of child.ingredients; let k = index" detail-none class="child-item" text-wrap>
-              <h2>{{ item.ingredientName }}</h2>
-              <<!--p text-lowercase>{{ item.information }}</p>-->
-              <!-- Direct Add Button -->
-              <!--<button ion-button outline item-end (click)="buyItem(item)">{{ item.idIngredient }}</button>-->
-            </ion-item>
-          </ion-list>
-        </ion-list-header>
-      </ion-list>
-    </ion-list-header>
-  </ion-list>
+          <!--<ion-list *ngIf="child.ingredients && child.open">-->
+            <!--&lt;!&ndash; Third Level &ndash;&gt;-->
+            <!--<ion-item *ngFor="let item of child.ingredients; let k = index" detail-none class="child-item" text-wrap>-->
+              <!--<h2>{{ item.ingredientName }}</h2>-->
+              <!--<&lt;!&ndash;p text-lowercase>{{ item.information }}</p>&ndash;&gt;-->
+              <!--&lt;!&ndash; Direct Add Button &ndash;&gt;-->
+              <!--&lt;!&ndash;<button ion-button outline item-end (click)="buyItem(item)">{{ item.idIngredient }}</button>&ndash;&gt;-->
+            <!--</ion-item>-->
+          <!--</ion-list>-->
+        <!--</ion-list-header>-->
+      <!--</ion-list>-->
+    <!--</ion-list-header>-->
+  <!--</ion-list>-->
 </ion-content>

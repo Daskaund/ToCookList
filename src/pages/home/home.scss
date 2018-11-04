@@ -16,4 +16,18 @@ page-home {
   }
 }
 
-
+.b-primary{
+  background-color : color($blue, primary) !important;
+}
+.b-secondary{
+  background-color : color($blue, secondary) !important;
+}
+.b-third{
+  background : color($blue, third) !important;
+}
+.b-forth{
+  background-color : color($blue, forth) !important;
+}
+.b-fifth{
+  background-color : color($blue, fifth) !important;
+}
