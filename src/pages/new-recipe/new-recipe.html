@@ -7,7 +7,6 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content>
   <ion-card>
     <ion-input #recipeName type="text" placeholder="Nom de la recette"></ion-input>
@@ -15,38 +14,32 @@
 
   <ion-list class="accordion-list">
     <!-- First Level -->
-    <ion-list-header *ngFor="let item of ingredientsList | async; let i = index" no-lines no-padding>
+    <ion-list-header *ngFor="let categorie of ingredientsList | async; let i = index" no-lines no-padding>
       <!-- Toggle Button -->
-      <button ion-item (click)="toggleSection(i, item)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
-        <ion-icon item-left name="arrow-forward" *ngIf="!item.open"></ion-icon>
-        <ion-icon item-left name="arrow-down" *ngIf="item.open"></ion-icon>
-        {{ item.familleMere }}
+      <button ion-item (click)="toggleSection($event, categorie)" detail-none> <!--premier niveau (Feculents)-->
+        <!--<ion-icon item-left name="arrow-forward"></ion-icon>-->
+        <!--<ion-icon class="hide" item-left name="arrow-down"></ion-icon>-->
+        {{ categorie.familleMere }}
       </button>
 
-      <ion-list *ngIf="item.typeMere && item.open" no-lines>
+      <ion-list *ngIf="categorie.typeMere" no-lines class="section hide">
         <!-- Second Level -->
-        <ion-list-header class="correctMargin" *ngFor="let child of item.typeMere | async; let j = index" no-padding>
+        <ion-list-header class="correctMargin" *ngFor="let sousCategorie of categorie.typeMere; let j = index" no-padding>
           <!-- Toggle Button -->
-          <button ion-item (click)="toggleItem(i, j)" *ngIf="child.sousType" class="child" detail-none>
-            <ion-icon item-left name="add" *ngIf="!child.open"></ion-icon>
-            <ion-icon item-left name="close" *ngIf="child.open"></ion-icon>
-            {{ child.famille }} <!--Mettre la liste des ingredients-->
+          <button ion-item (click)="toggleSection($event, categorie)" *ngIf="sousCategorie.sousType" class="child" detail-none> <!--second niveau (Pates)-->
+            <!--<ion-icon item-left name="add"></ion-icon>-->
+            <!--<ion-icon class="hide" item-left name="close"></ion-icon>-->
+            {{ sousCategorie.famille }}
           </button>
 
-          <!-- Direct Add Button as Fallback -->
-          <ion-item *ngIf="!child.sousType" ion-item detail-none class="child-item" text-wrap (click)="addToList(child.typeName, $event)">
-            <h2>{{ child.typeName }}</h2>
-            <!--<p text-lowercase>{{ child.information }}</p>-->
-            <!--<button ion-button outline item-end (click)="buyItem(child)">{{ child.idIngredient }}</button>-->
+          <ion-item *ngIf="!sousCategorie.famille" ion-item detail-none class="child-item thirdSubSection" text-wrap (click)="addToList(sousCategorie.typeName, $event)">
+            <h2>{{ sousCategorie.typeName }}</h2>  <!--Second niveau si pas de sous famille (Legumes/...)-->
           </ion-item>
 
-          <ion-list *ngIf="child.sousType && child.open">
+          <ion-list *ngIf="sousCategorie.famille" class="hide">
             <!-- Third Level -->
-            <ion-item *ngFor="let item of child.sousType | async; let k = index" detail-none class="child-item thirdSubSection" text-wrap  (click)="addToList(item.typeName, $event)">
-              <h2>{{ item.typeName }}</h2>
-              <!--p text-lowercase>{{ item.information }}</p>-->
-              <!-- Direct Add Button -->
-              <!--<button ion-button outline item-end (click)="buyItem(item)">{{ item.idIngredient }}</button>-->
+            <ion-item *ngFor="let sousType of sousCategorie.sousType; let k = index" detail-none class="child-item thirdSubSection" text-wrap  (click)="addToList(sousType.typeName, $event)">  <!--troisieme niveau (Spaghetti)-->
+              <h2>{{ sousType.typeName }}</h2>
             </ion-item>
           </ion-list>
         </ion-list-header>

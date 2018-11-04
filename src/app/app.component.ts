@@ -16,7 +16,7 @@ import {LaboratoirePage} from "../pages/laboratoire/laboratoire";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LaboratoirePage;
+  rootPage: any = NewRecipePage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -25,11 +25,11 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
+      { title: 'Accueil', component: HomePage },
       { title: 'Labo', component: LaboratoirePage },
-      { title: 'This week\'s recipes', component: ListPage },
-      { title: 'New recipe', component: NewRecipePage },
-      { title: 'Manage recipes', component: ManageRecipePage }
+      { title: 'Planning repas', component: ListPage },
+      { title: 'Nouvelle recette', component: NewRecipePage },
+      { title: 'Gérer les recettes', component: ManageRecipePage }
     ];
 
   }

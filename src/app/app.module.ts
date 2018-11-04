@@ -33,7 +33,7 @@ import {LaboratoirePage} from "../pages/laboratoire/laboratoire";
     NewRecipePage,
     LoginPage,
     RegisterPage,
-    LaboratoirePage
+    LaboratoirePage,
   ],
   imports: [
     BrowserModule,

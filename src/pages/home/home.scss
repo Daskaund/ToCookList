@@ -16,50 +16,18 @@ page-home {
   }
 }
 
-
-  .accordion-list {
-    background: color($colors, light);
-    height: 100%;
-  }
-  .section {
-    background: #fff;
-    color: #000;
-    margin-bottom: 4px;
-  }
-  .section-active {
-    background: color($blue, primary);
-    color: #fff;
-  }
-  .child {
-    background: #e8e7e6;
-    color: #000;
-    margin-bottom: 4px;
-  }
-  .child-item {
-    background: #f3f2f1;
-    padding: 10px;
-  }
-  .label {
-    margin: 0;
-  }
-  .list {
-    margin-bottom: 0;
-  }
-  .list-header-md{
-    margin-bottom: 4px;
-  }
-  .ion-list{
-    margin-top: 4px;
-  }
-  .item-md h2,
-  .input-wrapper{
-    text-transform: capitalize;
-  }
-  .child,
-  .correctMargin{
-    margin-bottom: 0;
-  }
-
-.thirdSubSection:not(:last-child){
-  border-bottom: 1px solid rgba(0,0,0,.1) !important;
+.b-primary{
+  background-color : color($blue, primary) !important;
+}
+.b-secondary{
+  background-color : color($blue, secondary) !important;
+}
+.b-third{
+  background : color($blue, third) !important;
+}
+.b-forth{
+  background-color : color($blue, forth) !important;
+}
+.b-fifth{
+  background-color : color($blue, fifth) !important;
 }

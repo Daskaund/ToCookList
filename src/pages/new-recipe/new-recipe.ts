@@ -16,7 +16,6 @@ export class NewRecipePage {
 
   constructor(private afProvider: AfProvider, navCtrl: NavController, navParams: NavParams, private dataFetcher: DataFetcherProvider, private file: File) {
     this.ingredientsList = this.afProvider.getFiles();
-    console.log("this.ingredientsList : ", this.ingredientsList);
   }
 
   addRecipe(recipeName){
@@ -25,13 +24,17 @@ export class NewRecipePage {
     this.saveData(recipeName, this.ingredientSelected);
   }
 
-  toggleSection(i, item) {
-    console.log("toggleSection: ", i, item);
-    this.ingredientsList[i].open = !this.ingredientsList[i].open;
-  }
+  toggleSection(event: any, item){
+    let target = event.path[2];
+    let childOfTarget = event.path[4].childNodes[1].children[1];
 
-  toggleItem(i, j) {
-    this.ingredientsList[i].typeMere[j].open = !this.ingredientsList[i].typeMere[j].open;
+    if(childOfTarget.classList.contains("hide")){
+      childOfTarget.classList.remove("hide");
+      target.classList.add("section-active");
+    } else {
+      childOfTarget.classList.add("hide");
+      target.classList.remove("section-active");
+    }
   }
 
   removeDataArray(key, array){
@@ -45,27 +48,24 @@ export class NewRecipePage {
   }
 
   addToList(textValue, event: any){
-    if (event.path[4].style.backgroundColor == "rgb(78, 209, 255)"){
-      event.path[4].style.backgroundColor = "";
+    let target = event.path[4];
+    console.log(target);
+    if (target.classList.contains("b-third")){
+      target.classList.remove("b-third");
       this.ingredientSelected = this.removeDataArray(textValue, this.ingredientSelected);
     } else {
-      event.path[4].style.backgroundColor = "rgb(78, 209, 255)";
+      target.classList.add("b-third");
       this.ingredientSelected.push(textValue);
     }
     console.log(this.ingredientSelected);
   }
 
   saveData(title, ingredients){
-    this.file = new File();
     let newRecipe = {
       title: title,
       ingredientName: ingredients
     };
     let strRecipe = JSON.stringify(newRecipe);
-    /* console.log(file); */
-    console.log(strRecipe); /*
-    this.dataFetcher.postRecipes(strRecipe);
-    this.file.writeFile('assets/data/recipes.json', 'recipesTest.json', strRecipe);*/
+    console.log(strRecipe);
   }
-
 }
