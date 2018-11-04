@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import {DataFetcherProvider} from "../../providers/data-fetcher/data-fetcher";
 import { File } from '@ionic-native/file';
 import {AfProvider} from "../../providers/af/af";
@@ -14,7 +14,7 @@ export class NewRecipePage {
   ingredientsList: Observable<any[]>;
   ingredientSelected: any = [];
 
-  constructor(private afProvider: AfProvider, navCtrl: NavController, navParams: NavParams, private dataFetcher: DataFetcherProvider, private file: File) {
+  constructor(private toastCtrl: ToastController, private afProvider: AfProvider, navCtrl: NavController, navParams: NavParams, private dataFetcher: DataFetcherProvider, private file: File) {
     this.ingredientsList = this.afProvider.getFiles();
   }
 
@@ -67,5 +67,23 @@ export class NewRecipePage {
     };
     let strRecipe = JSON.stringify(newRecipe);
     console.log(strRecipe);
+    this.uploadInformation(strRecipe);
   }
+
+  uploadInformation(text) {
+    let upload = this.afProvider.uploadToStorage(text);
+    console.log("upload: ", upload);
+    // Perhaps this syntax might change, it's no error here!
+    upload.then().then(res => {
+      this.afProvider.storeInfoToDatabase(res.metadata).then(() => {
+        let toast = this.toastCtrl.create({
+          message: 'New File added!',
+          duration: 3000
+        });
+        toast.present();
+      });
+    });
+  }
+
+
 }
