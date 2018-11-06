@@ -32,6 +32,8 @@ export class AfProvider {
       fullPath: metainfo.fullPath,
       contentType: metainfo.contentType
     };
+    // let toSave = metainfo;
+    console.log("toSave: ", toSave);
     return this.db.list('files').push(toSave);
   }
 
