@@ -4,6 +4,7 @@ import {DataFetcherProvider} from "../../providers/data-fetcher/data-fetcher";
 import { File } from '@ionic-native/file';
 import {AfProvider} from "../../providers/af/af";
 import {Observable} from "rxjs/Observable";
+import * as firebase from "firebase";
 
 @IonicPage()
 @Component({
@@ -49,7 +50,7 @@ export class NewRecipePage {
 
   addToList(textValue, event: any){
     let target = event.path[4];
-    console.log(target);
+    // console.log(target);
     if (target.classList.contains("b-third")){
       target.classList.remove("b-third");
       this.ingredientSelected = this.removeDataArray(textValue, this.ingredientSelected);
@@ -57,7 +58,7 @@ export class NewRecipePage {
       target.classList.add("b-third");
       this.ingredientSelected.push(textValue);
     }
-    console.log(this.ingredientSelected);
+    // console.log(this.ingredientSelected);
   }
 
   saveData(title, ingredients){
@@ -65,7 +66,24 @@ export class NewRecipePage {
       title: title,
       ingredientName: ingredients
     };
-    let strRecipe = JSON.stringify(newRecipe);
-    console.log(strRecipe);
+    // let strRecipe = JSON.stringify(newRecipe);
+    console.log(newRecipe);
+    this.uploadInformation(newRecipe);
+  }
+
+  uploadInformation(text) {
+
+    firebase.database().ref('tests/').set({
+      text
+    })
+    //
+    // let upload = this.afProvider.uploadToStorage(text);
+    //
+    // // Perhaps this syntax might change, it's no error here!
+    // upload.then().then(res => {
+    //   this.afProvider.storeInfoToDatabase(res.metadata).then(() => {
+    //     console.log("fichier uploadé");
+    //   });
+    // });
   }
 }

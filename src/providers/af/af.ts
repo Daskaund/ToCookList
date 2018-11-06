@@ -19,8 +19,8 @@ export class AfProvider {
   }
 
   uploadToStorage(information): AngularFireUploadTask {
-    // let newName = `${new Date().getTime()}.txt`;
-    let newName = `${information}.txt`;
+    let newName = `${new Date().getTime()}.txt`;
+    // let newName = `${information}.txt`;
 
     return this.afStorage.ref(`files/${newName}`).putString(information);
   }
@@ -32,6 +32,8 @@ export class AfProvider {
       fullPath: metainfo.fullPath,
       contentType: metainfo.contentType
     };
+    // let toSave = metainfo;
+    console.log("toSave: ", toSave);
     return this.db.list('files').push(toSave);
   }
 
