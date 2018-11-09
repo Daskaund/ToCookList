@@ -12,7 +12,7 @@ export class HomePage {
   files: Observable<any[]>;
 
   constructor(private iab: InAppBrowser, public navCtrl: NavController, private afProvider: AfProvider, private alertCtrl: AlertController, private toastCtrl: ToastController) {
-    this.files = this.afProvider.getFiles();
+    this.files = this.afProvider.getFiles('recipe/');
   }
 
   addFile() {
@@ -65,8 +65,18 @@ export class HomePage {
     });
   }
 
-  viewFile(url) {
-    console.log(url);
-    // this.iab.create(url);
+  viewFile(event: any){
+    let target = event.path[3];
+    target.childNodes.forEach(function(e){
+      if(e.classList!=undefined){
+        if(e.classList.contains("hide")){
+          e.classList.remove("hide");
+          e.classList.add("triggered");
+        } else if (e.classList.contains("triggered")){
+          e.classList.remove("triggered");
+          e.classList.add("hide");
+        }
+      }
+    });
   }
 }

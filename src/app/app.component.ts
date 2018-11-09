@@ -16,7 +16,7 @@ import {LaboratoirePage} from "../pages/laboratoire/laboratoire";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = NewRecipePage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 

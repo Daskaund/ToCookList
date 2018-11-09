@@ -4,7 +4,6 @@ import {DataFetcherProvider} from "../../providers/data-fetcher/data-fetcher";
 import { File } from '@ionic-native/file';
 import {AfProvider} from "../../providers/af/af";
 import {Observable} from "rxjs/Observable";
-import * as firebase from "firebase";
 
 @IonicPage()
 @Component({
@@ -16,16 +15,17 @@ export class NewRecipePage {
   ingredientSelected: any = [];
 
   constructor(private toastCtrl: ToastController, private afProvider: AfProvider, navCtrl: NavController, navParams: NavParams, private dataFetcher: DataFetcherProvider, private file: File) {
-    this.ingredientsList = this.afProvider.getFiles();
+    this.ingredientsList = this.afProvider.getFiles('ingredients/');
   }
 
   addRecipe(recipeName){
-    console.log(this.ingredientSelected);
-    console.log(recipeName);
+    // console.log(this.ingredientSelected);
+    // console.log(recipeName);
     this.saveData(recipeName, this.ingredientSelected);
+    location.reload();
   }
 
-  toggleSection(event: any, item){
+  toggleSection(event: any){
     let target = event.path[2];
     let childOfTarget = event.path[4].childNodes[1].children[1];
 
@@ -68,22 +68,6 @@ export class NewRecipePage {
     };
     // let strRecipe = JSON.stringify(newRecipe);
     console.log(newRecipe);
-    this.uploadInformation(newRecipe);
-  }
-
-  uploadInformation(text) {
-
-    firebase.database().ref('tests/').set({
-      text
-    })
-    //
-    // let upload = this.afProvider.uploadToStorage(text);
-    //
-    // // Perhaps this syntax might change, it's no error here!
-    // upload.then().then(res => {
-    //   this.afProvider.storeInfoToDatabase(res.metadata).then(() => {
-    //     console.log("fichier uploadé");
-    //   });
-    // });
+    this.afProvider.uploadInformation("recipe/", newRecipe);
   }
 }

@@ -20,26 +20,26 @@
 </ion-header>
 
 <ion-content>
-<ion-title margin>Ingredients</ion-title>
+<ion-title margin>Recettes</ion-title>
 
   <ion-card *ngFor="let file of files | async">
     <ion-card-header>
       <!--{{ file.created | date:'medium' }}-->
-      {{ file.name }}
+      {{ file.title }}
     </ion-card-header>
 
     <ion-card-content>
 
-      {{ file.familleMere }}
+      <ion-label class="hide" *ngFor="let ingredient of file.ingredientName">{{ ingredient }}</ion-label>
 
-      <button ion-button block icon-left outline (click)="viewFile(file)">
-        <ion-icon name="eye"></ion-icon>
-        {{ file.fullPath }}
+
+      <button ion-button icon-center outline (click)="viewFile($event)">
+        <ion-icon icon-left name="eye">Voir les ingrédients</ion-icon>
       </button>
 
-      <button ion-button block outline icon-left color="danger" (click)="deleteFile(file)">
-        <ion-icon name="trash"></ion-icon> Delete
-      </button>
+      <!--<button ion-button outline icon-left color="danger" (click)="deleteFile(file)">-->
+        <!--<ion-icon name="trash"></ion-icon> Delete-->
+      <!--</button>-->
 
     </ion-card-content>
 
