@@ -58,5 +58,7 @@ page-new-recipe {
   .thirdSubSection{
     border-bottom: 1px solid rgba(17, 13, 17, 0.35) !important;
   }
+  ion-icon[data-hidden='true']{
+    display: none;
+  }
 }
-

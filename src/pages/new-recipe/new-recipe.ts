@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
-import {DataFetcherProvider} from "../../providers/data-fetcher/data-fetcher";
-import { File } from '@ionic-native/file';
+import {IonicPage} from 'ionic-angular';
 import {AfProvider} from "../../providers/af/af";
 import {Observable} from "rxjs/Observable";
 
@@ -14,27 +12,38 @@ export class NewRecipePage {
   ingredientsList: Observable<any[]>;
   ingredientSelected: any = [];
 
-  constructor(private toastCtrl: ToastController, private afProvider: AfProvider, navCtrl: NavController, navParams: NavParams, private dataFetcher: DataFetcherProvider, private file: File) {
+  constructor(private afProvider: AfProvider) {
     this.ingredientsList = this.afProvider.getFiles('ingredients/');
   }
 
   addRecipe(recipeName){
-    // console.log(this.ingredientSelected);
-    // console.log(recipeName);
     this.saveData(recipeName, this.ingredientSelected);
     location.reload();
   }
 
   toggleSection(event: any){
+    let iconForward = event.path[2].children[0];
+    let iconDown = event.path[2].children[1];
     let target = event.path[2];
     let childOfTarget = event.path[4].childNodes[1].children[1];
+    let iconAdd = event.path[4].childNodes[1].children[1].children[0];
+    let iconClose = event.path[4].childNodes[1].children[1].children[1];
 
     if(childOfTarget.classList.contains("hide")){
       childOfTarget.classList.remove("hide");
       target.classList.add("section-active");
+      iconDown.setAttribute("data-hidden", "false");
+      iconForward.setAttribute("data-hidden", "true");
+      iconClose.setAttribute("data-hidden", "false");
+      iconAdd.setAttribute("data-hidden", "true");
+
     } else {
       childOfTarget.classList.add("hide");
       target.classList.remove("section-active");
+      iconForward.setAttribute("data-hidden", "false");
+      iconDown.setAttribute("data-hidden", "true");
+      iconClose.setAttribute("data-hidden", "false");
+      iconAdd.setAttribute("data-hidden", "true");
     }
   }
 
@@ -50,7 +59,6 @@ export class NewRecipePage {
 
   addToList(textValue, event: any){
     let target = event.path[4];
-    // console.log(target);
     if (target.classList.contains("b-third")){
       target.classList.remove("b-third");
       this.ingredientSelected = this.removeDataArray(textValue, this.ingredientSelected);
@@ -58,7 +66,6 @@ export class NewRecipePage {
       target.classList.add("b-third");
       this.ingredientSelected.push(textValue);
     }
-    // console.log(this.ingredientSelected);
   }
 
   saveData(title, ingredients){
@@ -66,7 +73,6 @@ export class NewRecipePage {
       title: title,
       ingredientName: ingredients
     };
-    // let strRecipe = JSON.stringify(newRecipe);
     console.log(newRecipe);
     this.afProvider.uploadInformation("recipe/", newRecipe);
   }
