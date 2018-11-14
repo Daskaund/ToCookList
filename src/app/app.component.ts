@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import {NewRecipePage} from "../pages/new-recipe/new-recipe";
 import {ManageRecipePage} from "../pages/manage-recipe/manage-recipe";
 import {LaboratoirePage} from "../pages/laboratoire/laboratoire";
+import {MealsPlanningPage} from "../pages/meals-planning/meals-planning";
 
 
 @Component({
@@ -16,7 +17,7 @@ import {LaboratoirePage} from "../pages/laboratoire/laboratoire";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = NewRecipePage;
+  rootPage: any = MealsPlanningPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -27,7 +28,8 @@ export class MyApp {
     this.pages = [
       { title: 'Accueil', component: HomePage },
       { title: 'Labo', component: LaboratoirePage },
-      { title: 'Planning repas', component: ListPage },
+      { title: 'List page', component: ListPage },
+      { title: 'Planning repas', component: MealsPlanningPage },
       { title: 'Nouvelle recette', component: NewRecipePage },
       { title: 'Gérer les recettes', component: ManageRecipePage }
     ];

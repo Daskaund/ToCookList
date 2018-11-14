@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Planning des repas</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Repas souhaités</ion-label>
+    <ion-select (ionChange)="mealsNumberSelected($event)">
+      <ion-option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" value={{i}}>{{i}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <button ion-button (click)="generateMealsList()">Randomize meals</button>
+</ion-content>

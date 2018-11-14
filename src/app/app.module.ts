@@ -23,6 +23,7 @@ import {AngularFireStorageModule} from "@angular/fire/storage";
 import { AfProvider } from '../providers/af/af';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import {LaboratoirePage} from "../pages/laboratoire/laboratoire";
+import {MealsPlanningPage} from "../pages/meals-planning/meals-planning";
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {LaboratoirePage} from "../pages/laboratoire/laboratoire";
     LoginPage,
     RegisterPage,
     LaboratoirePage,
+    MealsPlanningPage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ import {LaboratoirePage} from "../pages/laboratoire/laboratoire";
     NewRecipePage,
     LoginPage,
     RegisterPage,
-    LaboratoirePage
+    LaboratoirePage,
+    MealsPlanningPage
   ],
   providers: [
     StatusBar,

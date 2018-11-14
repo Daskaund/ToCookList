@@ -17,8 +17,12 @@ export class NewRecipePage {
   }
 
   addRecipe(recipeName){
-    this.saveData(recipeName, this.ingredientSelected);
-    location.reload();
+    if (recipeName != "" && this.ingredientSelected != ""){
+      this.saveData(recipeName, this.ingredientSelected);
+      location.reload();
+    } else {
+      alert("Merci de spécifier un nom pour la recette et/ou des ingrédients");
+    }
   }
 
   toggleSection(event: any){
@@ -67,9 +71,7 @@ export class NewRecipePage {
   }
 
   addToList(textValue, event: any){
-    console.log(event);
     let icon = event.path[0].children[0];
-    console.log(icon);
     let target = event.path[4];
     if (target.classList.contains("b-third")){
       target.classList.remove("b-third");
