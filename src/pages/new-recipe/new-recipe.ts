@@ -22,12 +22,21 @@ export class NewRecipePage {
   }
 
   toggleSection(event: any){
-    let iconForward = event.path[2].children[0];
-    let iconDown = event.path[2].children[1];
-    let target = event.path[2];
-    let childOfTarget = event.path[4].childNodes[1].children[1];
-    let iconAdd = event.path[4].childNodes[1].children[1].children[0];
-    let iconClose = event.path[4].childNodes[1].children[1].children[1];
+
+    var path = event.path || (event.composedPath && event.composedPath());
+
+    if (path){
+      // console.log(path);
+      var iconForward = path[2].children[0];
+      var iconDown = path[2].children[1];
+      var target = path[2];
+      var childOfTarget = path[4].childNodes[1].children[1];
+      var iconAdd = path[4].childNodes[1].children[1].children[0];
+      var iconClose = path[4].childNodes[1].children[1].children[1];
+    } else {
+      console.log("Browser not supported");
+    }
+
 
     if(childOfTarget.classList.contains("hide")){
       childOfTarget.classList.remove("hide");
@@ -58,12 +67,19 @@ export class NewRecipePage {
   }
 
   addToList(textValue, event: any){
+    console.log(event);
+    let icon = event.path[0].children[0];
+    console.log(icon);
     let target = event.path[4];
     if (target.classList.contains("b-third")){
       target.classList.remove("b-third");
+      icon.classList.add("ion-ios-checkmark-circle-outline");
+      icon.classList.remove("ion-ios-checkmark-circle");
       this.ingredientSelected = this.removeDataArray(textValue, this.ingredientSelected);
     } else {
       target.classList.add("b-third");
+      icon.classList.remove("ion-ios-checkmark-circle-outline");
+      icon.classList.add("ion-ios-checkmark-circle");
       this.ingredientSelected.push(textValue);
     }
   }

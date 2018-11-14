@@ -14,7 +14,7 @@
 
   <ion-list class="accordion-list">
     <!-- First Level -->
-    <ion-list-header *ngFor="let categorie of ingredientsList | async; let i = index" no-lines no-padding>
+    <ion-list-header *ngFor="let categorie of ingredientsList | async" no-lines no-padding>
       <!-- Toggle Button -->
       <button ion-item (click)="toggleSection($event)" detail-none> <!--premier niveau (Feculents)-->
         <ion-icon data-hidden="false" id="iconForward" item-left name="arrow-forward"></ion-icon>
@@ -24,7 +24,7 @@
 
       <ion-list *ngIf="categorie.typeMere" no-lines class="section hide">
         <!-- Second Level -->
-        <ion-list-header class="correctMargin" *ngFor="let sousCategorie of categorie.typeMere; let j = index" no-padding>
+        <ion-list-header class="correctMargin" *ngFor="let sousCategorie of categorie.typeMere" no-padding>
           <!-- Toggle Button -->
           <button ion-item (click)="toggleSection($event)" *ngIf="sousCategorie.sousType" class="child" detail-none> <!--second niveau (Pates)-->
             <ion-icon id="iconAdd" data-hidden="false" item-left name="add"></ion-icon>
@@ -33,13 +33,13 @@
           </button>
 
           <ion-item *ngIf="!sousCategorie.famille" ion-item detail-none class="child-item thirdSubSection" text-wrap (click)="addToList(sousCategorie.typeName, $event)">
-            <h2>{{ sousCategorie.typeName }}</h2>  <!--Second niveau si pas de sous famille (Legumes/...)-->
+            <h2><ion-icon name="ios-checkmark-circle-outline"></ion-icon>  {{ sousCategorie.typeName }}</h2>  <!--Second niveau si pas de sous famille (Legumes/...)-->
           </ion-item>
 
           <ion-list *ngIf="sousCategorie.famille" class="hide">
             <!-- Third Level -->
-            <ion-item *ngFor="let sousType of sousCategorie.sousType; let k = index" detail-none class="child-item thirdSubSection" text-wrap  (click)="addToList(sousType.typeName, $event)">  <!--troisieme niveau (Spaghetti)-->
-              <h2>{{ sousType.typeName }}</h2>
+            <ion-item *ngFor="let sousType of sousCategorie.sousType" detail-none class="child-item thirdSubSection" text-wrap  (click)="addToList(sousType.typeName, $event)">  <!--troisieme niveau (Spaghetti)-->
+              <h2><ion-icon name="ios-checkmark-circle-outline"></ion-icon>  {{ sousType.typeName }}</h2>
             </ion-item>
           </ion-list>
         </ion-list-header>
