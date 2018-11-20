@@ -41,7 +41,6 @@ export class NewRecipePage {
       console.log("Browser not supported");
     }
 
-
     if(childOfTarget.classList.contains("hide")){
       childOfTarget.classList.remove("hide");
       target.classList.add("section-active");

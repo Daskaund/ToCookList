@@ -17,7 +17,7 @@ import {MealsPlanningPage} from "../pages/meals-planning/meals-planning";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = MealsPlanningPage;
+  rootPage: any = LaboratoirePage;
 
   pages: Array<{title: string, component: any}>;
 

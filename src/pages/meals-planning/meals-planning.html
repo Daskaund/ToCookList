@@ -15,4 +15,6 @@
     </ion-select>
   </ion-item>
   <button ion-button (click)="generateMealsList()">Randomize meals</button>
+
+  <ion-item class="recipeCounter" id="recipeN{{i}}" *ngFor="let meal of meals | async; let i = index">{{meal.title}}</ion-item>
 </ion-content>

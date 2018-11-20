@@ -16,7 +16,7 @@ import {NewRecipePage} from "../pages/new-recipe/new-recipe";
 import {HttpModule} from "@angular/http";
 import {File} from "@ionic-native/file";
 import {FIREBASE_CONFIG} from "./app.firebase.config";
-import {AngularFireModule} from "@angular/fire";
+import {AngularFireModule, FirebaseApp} from "@angular/fire";
 import {AngularFireAuthModule} from "@angular/fire/auth";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
 import {AngularFireStorageModule} from "@angular/fire/storage";
